@@ -16,13 +16,15 @@ replace_placeholder() {
   local escaped
   escaped=$(printf '%s\n' "$real_value" | sed 's/[&/\]/\\&/g')
 
-  local count
-  count=$(grep -rl "$placeholder" /app/.next | wc -l)
+  local files
+  files=$(grep -rl "$placeholder" /app/.next)
 
-  if [ "$count" -eq 0 ]; then
+  if [ -z "$files" ]; then
     echo "⚠️  WARNING: placeholder '${placeholder}' not found in any file"
   else
-    grep -rl "$placeholder" /app/.next | xargs sed -i "s|${placeholder}|${escaped}|g"
+    local count
+    count=$(echo "$files" | wc -l)
+    echo "$files" | xargs sed -i "s|${placeholder}|${escaped}|g"
     echo "✅ Replaced '${placeholder}' in ${count} file(s)"
   fi
 }
