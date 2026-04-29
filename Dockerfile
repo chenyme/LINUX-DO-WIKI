@@ -24,6 +24,12 @@ COPY . .
 
 RUN pnpm build
 
+RUN grep -rl \
+    -e "__NEXT_PUBLIC_BASE_URL__" \
+    -e "__OAUTH_CLIENT_ID__" \
+    -e "__OAUTH_CLIENT_SECRET__" \
+    /app/.next > /app/.replace.files
+
 # ---- runner stage ----
 FROM base AS runner
 
