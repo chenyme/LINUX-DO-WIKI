@@ -3,8 +3,8 @@ import { cookies } from 'next/headers';
 
 // OAuth2配置
 const OAUTH2_CONFIG = {
-  clientId: process.env.OAUTH_CLIENT_ID || 'bVcJaAhPOpbzS7tJe33qOiRbaffg4hf7',
-  clientSecret: process.env.OAUTH_CLIENT_SECRET || '2rT42kRTsCajielGqysihZpilBZAxkqe',
+  clientId: process.env.OAUTH_CLIENT_ID || '',
+  clientSecret: process.env.OAUTH_CLIENT_SECRET || '',
   authorizeEndpoint: 'https://connect.linux.do/oauth2/authorize',
   tokenEndpoint: 'https://connect.linux.do/oauth2/token',
   userInfoEndpoint: 'https://connect.linux.do/api/user',
